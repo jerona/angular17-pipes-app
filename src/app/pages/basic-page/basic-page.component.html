@@ -1,0 +1,71 @@
+    <h1 class="text-2xl font-bold">Pipes Básicos</h1>
+    <h3 class="text-xl font-bold">Pipes incluido en angular</h3>
+    <div class="stats stats-vertical shadow lg:stats-horizontal w-full">
+        <div class="stat">
+            <div class="stat-title text-xl">LowerCase Pipe</div>
+            <div class="stat-desc text-xl">Texto original = {{nameUpper()}}</div>
+            <div class="stat-value">{{nameUpper() | lowercase}}</div>
+        </div>
+    
+        <div class="stat">
+            <div class="stat-title text-xl">UpperCase Pipe</div>
+            <div class="stat-desc text-xl">Texto original = {{nameUpper()}}</div>
+            <div class="stat-value">{{nameUpper() | uppercase}}</div>
+        </div>
+    
+        <div class="stat">
+            <div class="stat-title text-xl">TitleCase Pipe</div>
+            <div class="stat-desc text-xl">Texto original = {{fullName()}}</div>
+            <div class="stat-value">{{fullName() | titlecase}}</div>
+        </div>
+    </div>
+
+<div class="divider"></div>
+
+    <h1 class="text-2xl font-bold">Pipes Básicos</h1>
+    <h3 class="text-xl font-bold">Pipes incluido en angular</h3>
+
+    <div class="stats stats-vertical shadow lg:stats-horizontal w-full">
+        <div class="stat">
+            <div class="stat-title text-xl">Date Pipe - date:long:GMT-6</div>
+            <div class="stat-desc text-xl">Texto original = {{customDate()}}</div>
+            <div class="stat-value">{{customDate() | date:'long':'GMT-6'}}</div>
+        </div>
+    
+        <div class="stat">
+            <div class="stat-title text-xl">Date Pipe - date:'dd/MM/yyyy'</div>
+            <div class="stat-desc text-xl">Texto original = {{customDate()}}</div>
+            <div class="stat-value">{{customDate() | date:'dd/MM/yyyy'}}</div>
+        </div>    
+    </div>
+
+<div class="divider"></div>
+
+    <h1 class="text-2xl font-bold">Pipes Básicos</h1>
+    <h3 class="text-xl font-bold">Pipes incluido en angular</h3>
+
+    <div class="stats stats-vertical shadow lg:stats-horizontal w-full">
+        <div class="stat">
+            <div class="stat-title text-xl">Date Pipe - date:'HH:mm:ss'</div>
+            <div class="stat-desc text-xl">Texto original = {{customDate()}}</div>
+            <div class="stat-value">{{customDate() | date:'HH:mm:ss'}}</div>
+        </div>
+    
+        <div class="stat">
+            <div class="stat-title text-xl">Date Pipe - date:'HH:mm:ss'</div>
+            <div class="stat-desc text-xl">Texto original = {{customDate()}}</div>
+            <div class="stat-value">{{customDate() | date:'EEEE d, MMMM'}}</div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!--Cambiar locale-->
+    <div class="flex flex-roww gap-2">
+        <h1 class="text-2xl font-bold">Locale Actual: 
+            <span class="badge badge-secondary">ES</span>
+        </h1>
+        <button class="btn btn-primary">Changer Francais</button>
+        <button class="btn btn-primary">Cambiar Español</button>
+        <button class="btn btn-primary">Cambiar Inglés</button>
+    </div>
