@@ -1,0 +1,17 @@
+<div class="card bg-base-200 shadow-xl">
+    <div class="card-body">
+        <!--
+            Todo lo que este dentro del componente en el padre se transmite al hijo
+            EJ: 
+            Padre <app-card><p>transmitir</p></app-card>
+            Hijo: 
+            con la directiva ng-content puesto en el hijo se transmite el contenido del 
+            parrafo especificado en el padre en el componente hijo.        
+        -->
+        <p class="text-2xl font-bold">Pipe: {{title()}}</p>
+        <ng-content>
+
+        </ng-content>        
+    </div>
+</div>
+

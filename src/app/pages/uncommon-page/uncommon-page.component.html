@@ -1,1 +1,110 @@
-<p>uncommon-page works!</p>,
+<section class="mx-5 mg-5">
+    <h1 class="text-2xl font-bold">Pipes no tan comunes</h1>
+    <h3 class="text-xl font-bold">Pipes incluido en angular</h3>
+</section>
+<!--
+Pantallas Pequeñas sm (small)         | sm:grid-cols-1,
+Pantallas Medianas (medium)           | md:grid-cols-2
+Pantallar Largas (large)              | lg: grid-cols-3
+Pantallas Extras Largas (Extra Large) | xl: grid-cols-3  
+gap-1 (0.25rem-4px) = 4px             | Separación 4px
+gap-2 (0.25rem-4px) = 4px * 2 = 8px   | Separación 8px
+gap-3 (0.25rem-4px) = 4px * 3 = 12px  | Separación 12px
+gap-4 (0.25rem-4px) = 4px * 4 = 16px  | Separación 16px
+-->
+<div 
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+    <app-card title="i18nSelectPipe">
+        <p ngNonBindable>Pipe {{ client().gender | i18nSelect:invitationMap}}</p>
+        <p>Saludos a {{client().name}}, es un placer {{ client().gender | i18nSelect:invitationMap}} a nuestro evento</p>
+        <button (click)="changeClient()" class="btn btn-primary">Cambiar Cliente</button>
+    </app-card>
+
+    <app-card title="i18nPluralPipe">
+        <p ngNonBindable>Pipe {{clients().length | i18nPlural: clientsMap()}}</p>
+        <p>Actualmente {{clients().length | i18nPlural: clientsMap()}}</p>
+        <button 
+            [disabled]="clients().length === 0" 
+            (click)="deleteClient()" 
+            class="btn btn-primary"
+        >Cambiar Cliente</button>
+    </app-card>
+
+    <app-card title="SlicePipe">
+        <b>Original</b>
+        <p class="text-primary">{{clients().join(', ')}}</p>
+
+        <b class="mt-2">Slice:0:2</b>
+        <p class="text-primary">{{clients() | slice:0:2}}</p>
+
+        <b class="mt-2">Slice:1:2</b>
+        <p class="text-primary">{{clients() | slice:1:2}}</p>
+
+        <b class="mt-2">Slice:1:4</b>
+        <p class="text-primary">{{clients() | slice:1:4}}</p>
+
+        <b class="mt-2">Slice:0:-2</b>
+        <p class="text-primary">{{clients() | slice:0:-2}}</p>
+    </app-card>
+
+    <app-card title="JsonPipe">
+       <p> original {{clients()}}</p>
+       <p ngNonBindable>Pipe - {{clients() | json}}</p>
+       <pre class="text-primary">{{clients() | json}}</pre>
+
+       <p> original {{client()}}</p>
+       <p ngNonBindable>Pipe - {{client() | json}}</p>
+       <pre class="text-primary">{{client() | json}}</pre>
+
+       <p> original {{clients().join(', ') }}</p>
+       <p ngNonBindable> Pipe - {{clients().join(', ') | json | uppercase}}</p>
+       <pre class="text-primary">{{clients().join(', ') | json | uppercase}}</pre>
+    </app-card>
+
+    <app-card title="KeyValuePipe">
+        <p>Recorrer objetos, set, maps que no son arreglos</p>
+        <ul>
+            @for (item of profile | keyvalue; track $index) {
+                <li>
+                    <span class="text-primary">
+                        <strong>
+                            {{item.key}}
+                        </strong>
+                        {{item.value}}
+                    </span>
+
+                </li>
+            }
+        </ul>
+    </app-card>
+
+    <app-card title="AsyncPipe">
+    <p ngNonBindable>Pipe con promesas (con setTimeout) controlflow &#64;if</p>
+    <p>pipe - promiseValue | async</p>
+    @if ( promiseValue | async; as value){
+        <!-- 
+            ponemos el as value para obtener el valor sin necesidad de 
+            volver a hacer la llamada ya que promiseValue|async sería repetir la llamada.
+            Y como esto ya lo tenemos desde el controlflow de @if lo aprovechamos.
+        -->
+        <p class="text-primary">{{value}}</p>
+    }@else {
+    <p>esperando primer valor</p>
+    }
+    </app-card>
+
+    <app-card title="AsyncPipe">
+        <p>Pipe con observables (con interval) controlflow &#64;if</p>
+        <p>pipe - myObservableTimer | async</p>
+        @if ( myObservableTimer | async; as value){
+            <!-- 
+                ponemos el as value para obtener el valor sin necesidad de 
+                volver a hacer la llamada ya que promiseValue|async sería repetir la llamada.
+                Y como esto ya lo tenemos desde el controlflow de @if lo aprovechamos.
+            -->
+            <p class="text-primary">{{value}}</p>
+        }@else {
+            <p>Esperando primer valor</p>
+        }
+        </app-card>
+</div>
